@@ -53,8 +53,14 @@ function App() {
             </p>
             
             <p>
-              {[...sumiji].map((rate: string) => `| 「${rate}」${Tenji.toTenji(rate, {kanji: true})} `)}|
-            </p>
+              {[...sumiji].map((rate: string) => {
+          if(rate !== "|") {
+            return `| 「${Tenji.toTenji(rate, {kanji: true})}」${rate} `
+          } else {
+            return "|"
+          }
+        })}
+        </p>
             </>
           )}
 
@@ -90,8 +96,14 @@ function App() {
         }}
       />
       <p>
-        {[...Tenji.fromTenji(typedBrailleStrings, {kanji: true})].map((rate: string) => `| 「${Tenji.toTenji(rate, {kanji: true})}」${rate} `)}|
-      </p>
+        {[...Tenji.fromTenji(typedBrailleStrings, {kanji: true})].map((rate: string) => {
+          if(rate !== "|") {
+            return `| 「${Tenji.toTenji(rate, {kanji: true})}」${rate} `
+          } else {
+            return "|"
+          }
+        })}
+        </p>
             </>
           )}
           {func === 4 && (

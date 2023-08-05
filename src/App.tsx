@@ -55,7 +55,7 @@ function App() {
             <p>
               {[...sumiji].map((rate: string) => {
           if(rate !== "|") {
-            return `| 「${Tenji.toTenji(rate, {kanji: true})}」${rate} `
+            return `| 「${rate}」${Tenji.toTenji(rate, {kanji: true})} `
           } else {
             return "|"
           }

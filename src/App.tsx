@@ -59,7 +59,7 @@ function App() {
           } else {
             return "|"
           }
-        })}
+        })}|
         </p>
             </>
           )}
@@ -102,7 +102,7 @@ function App() {
           } else {
             return "|"
           }
-        })}
+        })}|
         </p>
             </>
           )}

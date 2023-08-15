@@ -31,10 +31,10 @@ function App() {
               label="墨字→点字"
               onChange={selectChange}
             >
-              <MenuItem value={1}>墨字→点字（1文字ずつ）</MenuItem>
-              <MenuItem value={2}>墨字→点字</MenuItem>
-              <MenuItem value={3}>点字→墨字（1文字ずつ）</MenuItem>
-              <MenuItem value={4}>点字→墨字</MenuItem>
+              <MenuItem value={1}>|「墨字」点字|</MenuItem>
+              <MenuItem value={2}>点字のみ表示</MenuItem>
+              <MenuItem value={3}>|「点字」墨字|</MenuItem>
+              <MenuItem value={4}>点字キーボード</MenuItem>
             </Select>
           </FormControl>
           </div>
@@ -84,19 +84,20 @@ function App() {
           )}
           {func === 3 && (
             <>
-      <p>点字を入力してください。</p>
-      <TextField
-        variant="outlined"
-        value={typedBrailleStrings}
-        onKeyDown={(e) => {
-          setTypedBrailleStrings(e);
-        }}
-        onKeyUp={(e) => {
-          setTypedBrailleStrings(e);
-        }}
-      />
-      <p>
-        {[...Tenji.fromTenji(typedBrailleStrings, {kanji: true})].map((rate: string) => {
+            <span>墨字を入力してください。</span>
+            <p>
+            <TextField
+              type="text"
+              value={sumiji}
+              key={"入力1"}
+              onChange={(e) => {
+                setSumiji(e.target.value);
+              }}
+            />
+            </p>
+            
+            <p>
+              {[...sumiji].map((rate: string) => {
           if(rate !== "|") {
             return `| 「${Tenji.toTenji(rate, {kanji: true})}」${rate} `
           } else {
@@ -106,6 +107,7 @@ function App() {
         </p>
             </>
           )}
+
           {func === 4 && (
             <>
       <p>点字を入力してください。</p>
